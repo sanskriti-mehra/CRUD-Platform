@@ -1,0 +1,16 @@
+body { font-family: Arial, Helvetica, sans-serif; margin:0; padding:0; background:#f6f7fb; color:#222; }
+.container { max-width:1000px; margin:24px auto; background:white; padding:20px; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.navbar { background:#1f6feb; color:white; padding:10px 20px; display:flex; align-items:center; justify-content:space-between; }
+.navbar a { color:white; text-decoration:none; margin-right:12px; }
+.brand a { font-weight:bold; color:white; font-size:18px; }
+.models ul { list-style:none; padding:0; }
+.field-row, .field { display:flex; gap:8px; margin-bottom:8px; align-items:center; }
+.field-row input[type="text"], .field-row select, input[type="number"], input[type="date"], input[type="text"] { padding:6px; }
+button { padding:6px 10px; border-radius:4px; border:1px solid #ccc; background:#fff; cursor:pointer; }
+button:hover { opacity:0.9; }
+table.records { width:100%; border-collapse:collapse; margin-top:12px; }
+table.records th, table.records td { border:1px solid #ddd; padding:8px; text-align:left; }
+.footer { margin-top:12px; padding:12px; color:#666; font-size:13px; text-align:center; }
+.details { border-collapse:collapse; width:50%; }
+.details th { text-align:left; padding:8px; border-bottom:1px solid #eee; width:30%; }
+.details td { padding:8px; border-bottom:1px solid #eee; }

@@ -1,0 +1,19 @@
+{
+  "name": "product",
+  "tableName": "product",
+  "fields": [],
+  "ownerField": null,
+  "rbac": {
+    "Admin": [
+      "all"
+    ],
+    "Manager": [
+      "create",
+      "read",
+      "update"
+    ],
+    "Viewer": [
+      "read"
+    ]
+  }
+}

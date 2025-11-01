@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title><%= model.name %> List</title>
+  <link rel="stylesheet" href="/public/styles.css" />
+</head>
+<body>
+  <%- include('../includes/navbar') %>
+  <div class="container">
+    <h2><%= model.name %> — Records</h2>
+    <p>Model fields: <%= model.fields.map(f => f.name + ':' + f.type).join(', ') %></p>
+
+    <p><a href="/listings/<%= model.tableName %>/new?user=<%= locals.currentUser.username %>">Add new <%= model.name %></a></p>
+
+    <% if (items && items.length) { %>
+      <table class="records">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <% model.fields.forEach(f => { %><th><%= f.name %></th><% }) %>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% items.forEach(it => { %>
+            <tr>
+              <td><%= it.id %></td>
+              <% model.fields.forEach(f => { %>
+                <td><%= (it[f.name] === null || it[f.name] === undefined) ? '' : it[f.name] %></td>
+              <% }) %>
+              <td>
+                <a href="/listings/<%= model.tableName %>/<%= it.id %>?user=<%= locals.currentUser.username %>">View</a>
+                <a href="/listings/<%= model.tableName %>/<%= it.id %>/edit?user=<%= locals.currentUser.username %>">Edit</a>
+                <form action="/listings/<%= model.tableName %>/<%= it.id %>?_method=DELETE&user=<%= locals.currentUser.username %>" method="post" style="display:inline">
+                  <button type="submit" onclick="return confirm('Delete?')">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No records yet.</p>
+    <% } %>
+
+    <p><a href="/?user=<%= locals.currentUser.username %>">Back to Admin Home</a></p>
+  </div>
+  <%- include('../includes/footer') %>
+</body>
+</html>

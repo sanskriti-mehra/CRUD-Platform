@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head><meta charset="utf-8"/><title>Login</title></head>
+  <body>
+    <h2>Login (demo)</h2>
+    <ul>
+      <% users.forEach(u => { %>
+        <li><a href="/?user=<%= u.username %>"><%= u.name %> (<%= u.role %>)</a></li>
+      <% }) %>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+<nav class="navbar">
+  <div class="brand"><a href="/">Mini-IDP</a></div>
+  <div class="nav-links">
+    <a href="/?user=<%= locals.currentUser.username %>">Admin Home</a>
+  </div>
+  <div class="nav-user">
+    <span>Switch user:</span>
+    <a href="/?user=alice">alice</a> |
+    <a href="/?user=mike">mike</a> |
+    <a href="/?user=victor">victor</a>
+  </div>
+</nav>

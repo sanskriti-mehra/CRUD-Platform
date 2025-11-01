@@ -1,0 +1,8 @@
+<% layout('layout') %>
+<h2>Edit User</h2>
+
+<form method="POST">
+  <input name="name" value="<%= user.name %>" type="text" class="form-control mb-2"/>
+  <input name="email" value="<%= user.email %>" type="email" class="form-control mb-2"/>
+  <button class="btn btn-primary">Update</button>
+</form>

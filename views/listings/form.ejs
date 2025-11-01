@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title><%= item ? 'Edit ' + model.name : 'New ' + model.name %></title>
+  <link rel="stylesheet" href="/public/styles.css" />
+</head>
+<body>
+  <%- include('../includes/navbar') %>
+  <div class="container">
+    <h2><%= item ? 'Edit ' + model.name : 'Create new ' + model.name %></h2>
+    <form action="<%= action %>?user=<%= locals.currentUser.username %>" method="post">
+      <% if (item) { %>
+        <!-- For PUT we use _method in action already -->
+      <% } %>
+
+      <% model.fields.forEach(f => { %>
+        <div class="field">
+          <label><%= f.name %> (<%= f.type %>)
+            <% if (f.type === 'boolean') { %>
+              <input type="checkbox" name="<%= f.name %>" <%= item && item[f.name] ? 'checked' : '' %> />
+            <% } else if (f.type === 'number') { %>
+              <input type="number" name="<%= f.name %>" value="<%= item ? item[f.name] : (f.default || '') %>" />
+            <% } else if (f.type === 'date') { %>
+              <input type="date" name="<%= f.name %>" value="<%= item ? item[f.name] : (f.default || '') %>" />
+            <% } else { %>
+              <input type="text" name="<%= f.name %>" value="<%= item ? item[f.name] : (f.default || '') %>" />
+            <% } %>
+          </label>
+        </div>
+      <% }) %>
+
+      <div style="margin-top:12px;">
+        <button type="submit"><%= item ? 'Update' : 'Create' %></button>
+        <a href="/listings/<%= model.tableName %>?user=<%= locals.currentUser.username %>">Cancel</a>
+      </div>
+    </form>
+  </div>
+  <%- include('../includes/footer') %>
+</body>
+</html>

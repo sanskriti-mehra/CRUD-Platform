@@ -1,0 +1,25 @@
+<% layout('layout') %>
+<h2>Users</h2>
+<a href="/users/new" class="btn btn-primary mb-3">Add User</a>
+
+<table class="table table-bordered">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </tr>
+  <% users.forEach(u => { %>
+  <tr>
+    <td><%= u.id %></td>
+    <td><%= u.name %></td>
+    <td><%= u.email %></td>
+    <td>
+      <a href="/users/<%= u.id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+      <form method="POST" action="/users/<%= u.id %>/delete" style="display:inline;">
+        <button class="btn btn-danger btn-sm">Delete</button>
+      </form>
+    </td>
+  </tr>
+  <% }) %>
+</table>

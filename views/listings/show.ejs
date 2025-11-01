@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title><%= model.name %> — <%= item.id %></title>
+  <link rel="stylesheet" href="/public/styles.css" />
+</head>
+<body>
+  <%- include('../includes/navbar') %>
+  <div class="container">
+    <h2><%= model.name %> — Record <%= item.id %></h2>
+    <table class="details">
+      <% model.fields.forEach(f => { %>
+        <tr><th><%= f.name %></th><td><%= item[f.name] %></td></tr>
+      <% }) %>
+    </table>
+    <p>
+      <a href="/listings/<%= model.tableName %>?user=<%= locals.currentUser.username %>">Back to list</a>
+      <a href="/listings/<%= model.tableName %>/<%= item.id %>/edit?user=<%= locals.currentUser.username %>">Edit</a>
+    </p>
+  </div>
+  <%- include('../includes/footer') %>
+</body>
+</html>
